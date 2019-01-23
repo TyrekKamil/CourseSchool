@@ -1,4 +1,5 @@
-package com.pracownia.spring.entities;import javax.persistence.*;
+package com.pracownia.spring.entities;
+import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;

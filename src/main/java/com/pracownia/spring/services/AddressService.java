@@ -1,6 +1,5 @@
 package com.pracownia.spring.services;
-
-import com.pracownia.spring.entities.Product;
+;
 import com.pracownia.spring.entities.Address;
 
 import java.util.List;
@@ -15,5 +14,6 @@ public interface AddressService {
 
     void deleteAddress(Integer id);
 
+    public int howManyPosen();
 
 }

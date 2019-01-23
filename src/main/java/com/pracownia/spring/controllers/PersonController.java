@@ -1,7 +1,7 @@
 package com.pracownia.spring.controllers;
 
 import com.pracownia.spring.entities.Person;
-import com.pracownia.spring.entities.Seller;
+import com.pracownia.spring.repositories.PersonRepository;
 import com.pracownia.spring.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,12 +21,15 @@ import java.util.*;
 /**
  * Person controller.
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class PersonController {
 
     @Autowired
     private PersonService PersonService;
+    @Autowired
+    private PersonRepository personRepository;
 
 
     /**
@@ -76,7 +79,7 @@ public class PersonController {
     @RequestMapping(value = "/Person", method = RequestMethod.POST)
     public ResponseEntity<Person> create(@RequestBody @Valid @NotNull Person Person) {
         Random random = new Random();
-        int i = random.nextInt(555555);
+        int i = random.nextInt(20);
         Person.setPersonId(i);
         PersonService.savePerson(Person);
         return ResponseEntity.ok().body(Person);
@@ -104,7 +107,8 @@ public class PersonController {
     @RequestMapping(value = "/Person/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(HttpServletResponse response, @PathVariable Integer id) {
         PersonService.deletePerson(id);
-        return new RedirectView("/api/sellers", true);
+        return new RedirectView("/api/Persons", true);
     }
+
 
 }

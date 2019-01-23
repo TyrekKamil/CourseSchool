@@ -1,8 +1,7 @@
 package com.pracownia.spring.controllers;
 
-import com.pracownia.spring.entities.Product;
 import com.pracownia.spring.entities.Address;
-import com.pracownia.spring.services.PersonService;
+import com.pracownia.spring.repositories.AddressRepository;
 import com.pracownia.spring.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +15,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -66,7 +63,11 @@ public class AddressController {
         AddressService.deleteAddress(id);
         return new RedirectView("/api/Addresss", true);
     }
-
+    @RequestMapping(value = "/Addresss/howMany", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public int howMany()
+    {
+        return AddressService.howManyPosen();
+    }
 
 
 }

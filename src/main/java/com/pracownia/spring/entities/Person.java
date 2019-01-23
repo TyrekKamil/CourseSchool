@@ -27,21 +27,22 @@ public class Person
     @Column
     private String nazwisko;
 
-    @JsonIgnore
-    private DateTime date;
+//    @JsonIgnore
+//    private DateTime date;
 
-    @Column
-    private String newDate(DateTime x)
-    {
-        return x.toString();
-    }
-    public DateTime getDate() {
-        return date;
-    }
+//    @Column
+//    private String newDate(DateTime x)
+//    {
+//        return x.toString();
+//    }
+//    public DateTime getDate() {
+//        return date;
+//    }
+//
+//    public void setDate(DateTime date) {
+//        this.date = date;
+//    }
 
-    public void setDate(DateTime date) {
-        this.date = date;
-    }
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name="add_id", referencedColumnName = "id")
@@ -50,11 +51,10 @@ public class Person
     @Column(nullable = false, unique = true)
     private String pesel;
 
-    public Person(String imie, String nazwisko, DateTime date, Address adres, String pesel) {
+    public Person(String imie, String nazwisko, Address adres, String pesel) {
         this.imie = imie;
         this.nazwisko = nazwisko;
-
-        this.adres = adres;
+       this.adres = adres;
         this.pesel = pesel;
     }
     public Person()
@@ -62,11 +62,6 @@ public class Person
 
     }
 
-    @JsonIgnore
-    public String getAllInformation()
-    {
-        return imie + " " + nazwisko + " " + adres.getMiasto() + " " + adres.getUlica() + " " +  adres.getNumer() + " " + pesel;
-    }
 
   /* @ManyToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Course> courses = new ArrayList<Course>();
@@ -83,15 +78,15 @@ public class Person
     //private DateTime birth;
 
 
-   /* public DateTime getBirth() {
-        return birth;
-    }
+//   public DateTime getBirth() {
+//        return birth;
+//    }
+//
+//    public void setBirth(DateTime birth) {
+//        this.birth = birth;
+//    }
 
-    public void setBirth(DateTime birth) {
-        this.birth = birth;
-    }
 
-*/
    public Address getAdres() {
        return adres;
    }

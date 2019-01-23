@@ -1,6 +1,5 @@
 package com.pracownia.spring.services;
 
-import com.pracownia.spring.entities.Product;
 import com.pracownia.spring.entities.Address;
 import com.pracownia.spring.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,10 @@ public class AddressServiceImpl implements AddressService {
         AddressRepository.delete(id);
     }
 
-
+    @Override
+    public int howManyPosen()
+    {
+        return AddressRepository.howManyPosen();
+    }
 
 }
