@@ -1,0 +1,32 @@
+.speaker {
+  margin: 5px 0;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.speaker__name {
+  width: 60%;
+  font-size: 13px;
+  font-weight: 500;
+}
+.speaker__name--finished {
+  text-decoration: line-through;
+}
+.speaker__btn {
+  padding: 5px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+  color: white;
+}
+
+.speaker__btn--remove {
+  background-color: red;
+}
+.speaker__btn:hover {
+  transform: translateY(-2px);
+}

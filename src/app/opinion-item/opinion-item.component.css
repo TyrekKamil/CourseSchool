@@ -1,0 +1,32 @@
+.opinion {
+  margin: 5px 0;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+.opinion__name {
+  width: 60%;
+  font-size: 16px;
+  font-weight: 500;
+}
+.opinion__name--finished {
+  text-decoration: line-through;
+}
+.opinion__btn {
+  padding: 5px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  transition: 200ms;
+  color: white;
+}
+
+.opinion__btn--remove {
+  background-color: red;
+}
+.opinion__btn:hover {
+  transform: translateY(-2px);
+}

@@ -1,0 +1,19 @@
+<div class="opinion">
+
+  <div class="opinion__name" >
+    <table>
+
+      <tr>
+        <th style="border:2px">Kurs: {{opinion.course.name}}</th>
+      </tr>
+      <tr>
+        <th style="border:2px">{{ opinion.text }}</th>
+      </tr>
+
+    </table>
+
+  </div>
+  <button class="opinion__btn opinion__btn--remove" (click)="remove(opinion.id)"> Usuń </button>
+
+</div>
+<BR>

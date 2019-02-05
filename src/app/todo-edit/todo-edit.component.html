@@ -1,0 +1,17 @@
+<div class="container">
+{{todo.imie}} {{todo.nazwisko}} {{todo.pesel}}<BR>
+Miasto
+<input class="input" type="text" [(ngModel)]="todo.adres.miasto">
+<BR>
+ulica
+<input class="input" type="text" [(ngModel)]="todo.adres.ulica">
+<BR>
+numer
+<input class="input" type="text" [(ngModel)]="todo.adres.numer"><BR>
+numerID: {{todo.adres.id}}<BR>
+    <button class="button" (click)="editTodo(todo.adres.miasto, todo.adres.ulica, todo.adres.numer, todo.adres.id)">
+        EDYTUJ
+    </button>
+
+</div>
+

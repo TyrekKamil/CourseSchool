@@ -1,0 +1,25 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+<div class="todo">
+
+  <div class="todo__name" >
+     <table>
+    <tr>
+        <th >{{ todo.imie }}</th>
+        <th>{{ todo.nazwisko }}</th>
+        <th>{{ todo.pesel }}</th>
+        <th>{{ todo.date }}</th>
+        <th>{{ todo.adres.miasto }} </th>
+        <th>{{ todo.adres.ulica }} </th>
+        <th>{{ todo.adres.numer}} </th>
+    </tr>
+</table>
+
+
+  </div>
+  <button class="todo__btn todo__btn--remove" (click)="remove(todo.id)"> Usuń </button>
+<button class="todo__btn todo__btn--edit" (click)="editUser(todo.id)"> Edytuj</button> 
+</div>

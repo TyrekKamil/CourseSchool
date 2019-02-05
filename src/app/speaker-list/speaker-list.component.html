@@ -1,0 +1,4 @@
+<div class="speaker-list">
+  <app-speaker-item *ngFor="let speaker_item of speakers" [speaker]="speaker_item" (removeItem)="removeSpeaker($event)" (editItem)="editItem($event)">
+  </app-speaker-item>
+</div>

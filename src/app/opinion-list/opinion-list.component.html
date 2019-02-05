@@ -1,0 +1,4 @@
+<div class="opinion-list">
+  <app-opinion-item *ngFor="let opinion_item of opinions" [opinion]="opinion_item" (removeItem)="removeOpinion($event)">
+  </app-opinion-item>
+</div>
