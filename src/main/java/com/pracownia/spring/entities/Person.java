@@ -1,4 +1,5 @@
 package com.pracownia.spring.entities;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -8,6 +9,7 @@ import org.joda.time.LocalDate;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Date;
 
 @XmlRootElement
 @XmlType(propOrder={"date"})
@@ -17,7 +19,8 @@ import javax.xml.bind.annotation.XmlType;
 public class Person
 {
 
-    @Id @GeneratedValue
+    @Id     @GeneratedValue(generator = "gen6")
+    @SequenceGenerator(name="gen6", sequenceName = "author_seq6")
     @Column
     private int id;
 
@@ -27,21 +30,23 @@ public class Person
     @Column
     private String nazwisko;
 
-//    @JsonIgnore
-//    private DateTime date;
-
+    @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date date;
+//
 //    @Column
 //    private String newDate(DateTime x)
 //    {
 //        return x.toString();
 //    }
-//    public DateTime getDate() {
-//        return date;
-//    }
-//
-//    public void setDate(DateTime date) {
-//        this.date = date;
-//    }
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
 
     @OneToOne(cascade = CascadeType.PERSIST)
@@ -51,11 +56,12 @@ public class Person
     @Column(nullable = false, unique = true)
     private String pesel;
 
-    public Person(String imie, String nazwisko, Address adres, String pesel) {
+    public Person(String imie, String nazwisko, Address adres, String pesel, Date date) {
         this.imie = imie;
         this.nazwisko = nazwisko;
        this.adres = adres;
         this.pesel = pesel;
+        this.date = date;
     }
     public Person()
     {
@@ -73,11 +79,11 @@ public class Person
     public void setCourses(List<Course> courses) {
         this.courses = courses;
     }*/
-   // @Column(name="data urodzenia")
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    //private DateTime birth;
+//    @Column(name="data urodzenia")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+//    private DateTime birth;
 
-
+//
 //   public DateTime getBirth() {
 //        return birth;
 //    }
@@ -91,8 +97,8 @@ public class Person
        return adres;
    }
 
-    public void setAdres(Address adres) {
-        this.adres = adres;
+    public void setAdres(Address adress) {
+        this.adres = adress;
     }
 
    public int getId() {

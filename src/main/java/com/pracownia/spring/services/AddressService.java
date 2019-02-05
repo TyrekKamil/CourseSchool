@@ -16,4 +16,6 @@ public interface AddressService {
 
     public int howManyPosen();
 
+    List<Address> listAll();
+
 }

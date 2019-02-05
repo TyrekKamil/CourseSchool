@@ -15,5 +15,7 @@ public interface CourseService {
 
     void deleteCourse(Integer id);
 
+    int howMany();
+
 
 }

@@ -1,5 +1,6 @@
 package com.pracownia.spring.controllers;
 
+import com.pracownia.spring.entities.Course;
 import com.pracownia.spring.entities.Speaker;
 import com.pracownia.spring.services.SpeakerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,10 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class SpeakerController {
@@ -63,6 +66,12 @@ public class SpeakerController {
         return new RedirectView("/api/Speakers", true);
     }
 
+
+    @RequestMapping(value="/Speaker/course/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Course> getCourses(@PathVariable("id") Integer publicId) {
+        return SpeakerService.courses(publicId);
+    }
 
 
 }

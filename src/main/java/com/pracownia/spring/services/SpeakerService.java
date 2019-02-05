@@ -1,5 +1,6 @@
 package com.pracownia.spring.services;
 ;
+import com.pracownia.spring.entities.Course;
 import com.pracownia.spring.entities.Speaker;
 
 import java.util.List;
@@ -14,5 +15,6 @@ public interface SpeakerService {
 
     void deleteSpeaker(Integer id);
 
+    List<Course> courses(int id);
 
 }

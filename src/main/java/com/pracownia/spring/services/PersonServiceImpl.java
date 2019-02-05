@@ -1,11 +1,14 @@
 package com.pracownia.spring.services;
 
+import com.pracownia.spring.entities.Opinion;
 import com.pracownia.spring.entities.Person;
+import com.pracownia.spring.repositories.OpinionRepository;
 import com.pracownia.spring.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -16,6 +19,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     private PersonRepository PersonRepository;
+    @Autowired
+    private OpinionService opinionService;
+    @Autowired
+    private PersonService personService;
+    @Autowired
+    private OpinionRepository opinionRepository;
 
     @Override
     public Iterable<Person> listAllPersonsPaging(Integer pageNr, Integer howManyOnPage) {
@@ -39,7 +48,14 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void deletePerson(Integer id) {
+        Person a = new Person();
+        a = personService.getPersonById(id);
+        List<Opinion> result = opinionService.takePerson(a);
+        for(int i=0;i<result.size();i++)
+            opinionRepository.delete(result.get(i));
         PersonRepository.delete(id);
+
+
     }
 
     @Override
@@ -52,4 +68,9 @@ public class PersonServiceImpl implements PersonService {
 
 
 
+    @Override
+    public int olderThan()
+    {
+        return PersonRepository.young();
+    }
 }

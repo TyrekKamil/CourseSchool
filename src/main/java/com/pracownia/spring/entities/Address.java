@@ -14,12 +14,18 @@ public class Address
     @SequenceGenerator(name="gen", sequenceName = "author_seq")
     @Column
     private int id;
-
+    public Address(int id, String miasto, String ulica, String numer) {
+        this.id = id;
+        this.miasto = miasto;
+        this.ulica = ulica;
+        this.numer = numer;
+    }
     public Address(String miasto, String ulica, String numer) {
         this.miasto = miasto;
         this.ulica = ulica;
         this.numer = numer;
     }
+
 
     public Address()
     {
@@ -66,8 +72,6 @@ public class Address
     public void setNumer(String numer) {
         this.numer = numer;
     }
-
-
 
 
 

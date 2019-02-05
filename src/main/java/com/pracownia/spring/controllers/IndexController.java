@@ -9,6 +9,7 @@ import com.pracownia.spring.services.OpinionService;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,10 +67,10 @@ public class IndexController {
       Address adr5 = new Address("Poznań","Wrocławska","12");
       Address adr6 = new Address("Poznań","Osiedle Zwycięstwa","12");
 
-        Person p1 = new Person("Kamil","Pyrek", adr1, "98030408259");
-        Person p2= new Person("Martyna","Paprycka", adr2,  "981212408259");
-        Person p3 = new Person("Maciej","Rusek", adr3, "980555408259");
-        Person p4 = new Person("Michał","Gruby", adr4, "98030558259");
+        Person p1 = new Person("Kamil","Pyrek", adr1, "98030408259", new Date(98,7,12));
+        Person p2= new Person("Martyna","Paprycka", adr2,  "981212408259", new Date(94,5,12));
+        Person p3 = new Person("Maciej","Rusek", adr3, "980555408259", new Date(81,4,3));
+        Person p4 = new Person("Michał","Gruby", adr4, "98030558259", new Date(84,1,13));
 
         Speaker s1 = new Speaker("Włodzimierz","Lewy",adr5, "72121209091");
         Speaker s2 = new Speaker("Maciej","Prawy",adr6, "7998121298");

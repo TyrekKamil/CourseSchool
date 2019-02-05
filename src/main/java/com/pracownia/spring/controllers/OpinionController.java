@@ -1,5 +1,6 @@
 package com.pracownia.spring.controllers;
 
+import com.pracownia.spring.entities.Course;
 import com.pracownia.spring.entities.Opinion;
 import com.pracownia.spring.services.OpinionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,13 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 public class OpinionController {
 
@@ -64,5 +69,15 @@ public class OpinionController {
     }
 
 
+    @RequestMapping(value = "/Opinion/list/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Opinion> list(@PathVariable("page") Integer pageNr,@RequestParam("size") Optional<Integer> howManyOnPage) {
+        return OpinionService.listAllProductsPaging(pageNr, howManyOnPage.orElse(2));
+    }
 
+
+    @RequestMapping(value = "/Opinion/bestCourse", method = RequestMethod.GET, produces = MediaType.APPLICATION_ATOM_XML_VALUE)
+    @ResponseBody
+    public List<Course> theMost() {
+        return OpinionService.mostOpinions();
+    }
 }

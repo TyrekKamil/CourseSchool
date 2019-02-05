@@ -11,4 +11,9 @@ public interface AddressRepository extends CrudRepository<Address, Integer>
     @Query("select count(*) from Address a where a.miasto='Poznań' or a.miasto='Poznan' ")
     Integer howManyPosen();
 
+    @Query("from Address a order by a.id")
+    List<Address> last();
+
+
+
 }

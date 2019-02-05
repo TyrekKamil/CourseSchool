@@ -93,6 +93,16 @@
             <artifactId>JsonXMLDatabase</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-core</artifactId>
+            <version>3.2.0.DATAREST-1205-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-rest-core</artifactId>
+            <version>3.2.0.DATAREST-1205-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,5 +1,6 @@
 package com.pracownia.spring.services;
 
+import com.pracownia.spring.entities.Course;
 import com.pracownia.spring.entities.Speaker;
 import com.pracownia.spring.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class SpeakerServiceImpl implements SpeakerService {
     public void deleteSpeaker(Integer id) {
         SpeakerRepository.delete(id);
     }
+
+    @Override
+    public List<Course> courses(int id) {return SpeakerRepository.courses(id); }
 
 
 

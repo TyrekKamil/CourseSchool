@@ -9,4 +9,8 @@ import java.util.List;
 public interface CourseRepository extends CrudRepository<Course, Integer> {
 
 
+        @Query("select count(*) from Course c   ")
+        Integer howManyCourses();
+
+
 }

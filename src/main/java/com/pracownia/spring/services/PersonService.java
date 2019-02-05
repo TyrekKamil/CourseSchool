@@ -16,5 +16,5 @@ public interface PersonService {
     Boolean checkIfExist(Integer id);
 
     public Iterable<Person> listAllPersonsPaging(Integer pageNr, Integer howManyOnPage);
-
+    public int olderThan();
 }

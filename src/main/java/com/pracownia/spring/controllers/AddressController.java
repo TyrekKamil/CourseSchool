@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 public class AddressController {
 
@@ -49,10 +50,12 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/Address", method = RequestMethod.PUT)
-    public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Address Address) {
-            Address AddressFromData = AddressService.getAddressById(Address.getId());
+    public ResponseEntity<Void> edit(@RequestBody @Valid @NotNull Address address) {
+            Address AddressFromData = AddressService.getAddressById(address.getId());
+            Address newAddress = address;
+            System.out.println(address.getId());
             if(Objects.nonNull(AddressFromData)) {
-                AddressService.saveAddress(Address);
+                AddressService.saveAddress(newAddress);
                 return new ResponseEntity<>(HttpStatus.CREATED);
             } else
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

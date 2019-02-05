@@ -1,7 +1,10 @@
 package com.pracownia.spring.controllers;
 
+import com.pracownia.spring.entities.Address;
 import com.pracownia.spring.entities.Person;
+import com.pracownia.spring.repositories.AddressRepository;
 import com.pracownia.spring.repositories.PersonRepository;
+import com.pracownia.spring.services.AddressService;
 import com.pracownia.spring.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +33,9 @@ public class PersonController {
     private PersonService PersonService;
     @Autowired
     private PersonRepository personRepository;
+
+    @Autowired
+    private AddressService addressService;
 
 
     /**
@@ -77,12 +83,14 @@ public class PersonController {
      *
      */
     @RequestMapping(value = "/Person", method = RequestMethod.POST)
-    public ResponseEntity<Person> create(@RequestBody @Valid @NotNull Person Person) {
-        Random random = new Random();
-        int i = random.nextInt(20);
-        Person.setPersonId(i);
-        PersonService.savePerson(Person);
-        return ResponseEntity.ok().body(Person);
+    public ResponseEntity<Person> create(@RequestBody @Valid @NotNull Person person) {
+        System.out.println(person.getImie());
+        int x = addressService.listAll().size();
+        System.out.println(x);
+        person.setAdres(addressService.getAddressById(x));
+        PersonService.savePerson(person);
+        return ResponseEntity.ok().body(person);
+
     }
 
 
@@ -95,6 +103,7 @@ public class PersonController {
         if(!PersonService.checkIfExist(Person.getId()))
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         else {
+
             PersonService.savePerson(Person);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
@@ -110,5 +119,10 @@ public class PersonController {
         return new RedirectView("/api/Persons", true);
     }
 
+    @RequestMapping(value="/Person/old", method = RequestMethod.GET,  produces = MediaType.APPLICATION_JSON_VALUE)
+    public int younger()
+    {
+        return PersonService.olderThan();
+    }
 
 }

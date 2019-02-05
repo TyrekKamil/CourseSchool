@@ -40,4 +40,11 @@ public class AddressServiceImpl implements AddressService {
         return AddressRepository.howManyPosen();
     }
 
+    @Override
+    public List<Address> listAll()
+    {
+        return (List<Address>) AddressRepository.findAll();
+    }
+
+
 }

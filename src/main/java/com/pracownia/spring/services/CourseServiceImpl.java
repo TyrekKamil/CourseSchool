@@ -34,6 +34,10 @@ public class CourseServiceImpl implements CourseService {
         CourseRepository.delete(id);
     }
 
-
+    @Override
+    public int howMany()
+    {
+    return CourseRepository.howManyCourses();
+    }
 
 }

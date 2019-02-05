@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class CourseController {
@@ -66,6 +67,11 @@ public class CourseController {
         return new RedirectView("/api/Courses", true);
     }
 
+    @RequestMapping(value = "/Course/howMany", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public int howMany()
+    {
+        return CourseService.howMany();
+    }
 
 
 }
